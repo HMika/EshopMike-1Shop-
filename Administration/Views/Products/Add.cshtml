@@ -1,0 +1,60 @@
+﻿@model Models.Data.Products
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+
+    <div class="card-header">
+        <h1>Add new Product</h1>
+    </div>
+
+    @using (Html.BeginForm("Add", "Products", FormMethod.Post))
+    {
+        <div class="card-body">
+            <div class="card col-md-12 col-lg-6 col-12">
+                <label for="Title">Name Of Product</label>
+                <input type="text" class="form-control" name="NameOfProduct" />
+
+                <label for="Description">Description</label>
+                <input type="text" class="form-control" name="Description" />
+
+                <label for="Price">Price</label>
+                <input type="text" class="form-control" name="Price" />
+
+                <label for="Discount">Discount</label>
+                <input type="text" class="form-control" name="Discount" />
+
+                <label for="Dph">Dph</label>
+                <input type="text" class="form-control" name="Dph" />
+
+                <label for="PhotoPath">PhotoPath</label>
+                <input type="text" class="form-control" name="PhotoPath" />
+
+                <label for="Size">Size</label>
+                <input type="text" class="form-control" name="Size" />
+
+                <label for="Vendor">Vendor</label>
+                <input type="text" class="form-control" name="Vendor" />
+
+                <label for="Quantity">Quantity</label>
+                <input type="text" class="form-control" name="Quantity" />
+
+
+            </div>
+        </div>
+        <hr />
+        <div class="card-footer">
+            <div class=" row">
+                <input type="submit" class="btn btn-info" value="Save" />
+                <a class="btn btn-warning" href="@Url.Action("Index","Products")">Return to list</a>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+
+
+

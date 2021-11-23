@@ -1,0 +1,58 @@
+﻿@model Models.Data.Article
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="card">
+
+    <div class="card-header">
+        <h1>Edit article</h1>
+    </div>
+
+    @using (Html.BeginForm("Edit", "Article", FormMethod.Post))
+    {
+        <div class="card-body">
+            <div class="row flex-row-reverse">
+                <div class="col-md-12 col-lg-6 col-12">
+
+                    <div class="featured-image">
+                        <div class="" id="ProductPhoto">
+                            <img width="500" id="ProductPhotoImg" class="product-zoom product_variant_image" data-image-id="" alt="1. New and sale badge product" src="@Model.Picture">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card col-md-12 col-lg-6 col-12">
+                    <label for="Id">Id</label>
+                    <input type="text" class="form-control" value="@Model.Id" name="Id" disabled />
+
+                    <label for="Title">Title</label>
+                    <input type="text" class="form-control" value="@Model.Title" name="Title" />
+
+                    <label for="Context">Context</label>
+                    <input type="text" class="form-control" value="@Model.Context" name="Context" />
+
+                    <label for="Picture">Picture</label>
+                    <input type="text" class="form-control" value="@Model.Picture" name="Picture" />
+
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <div class="card-footer">
+            <div class=" row">
+                <input type="submit" class="btn btn-info" value="Save" />
+                <a class="btn btn-warning" href="@Url.Action("Index","Article")">Return to list</a>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+
+
+

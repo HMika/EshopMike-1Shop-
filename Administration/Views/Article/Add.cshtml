@@ -1,0 +1,41 @@
+﻿@model Models.Data.Article
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+
+    <div class="card-header">
+        <h1>Add new Article</h1>
+    </div>
+
+    @using (Html.BeginForm("Add", "Article", FormMethod.Post))
+    {
+        <div class="card-body">
+                <div class="card col-md-12 col-lg-6 col-12">
+                    <label for="Title">Title</label>
+                    <input type="text" class="form-control"  name="Title" />
+
+                    <label for="Context">Context</label>
+                    <input type="text" class="form-control"  name="Context" />
+
+                    <label for="Picture">Picture</label>
+                    <input type="text" class="form-control"  name="Picture" />
+
+                </div>
+        </div>
+        <hr />
+        <div class="card-footer">
+            <div class=" row">
+                <input type="submit" class="btn btn-info" value="Save" />
+                <a class="btn btn-warning" href="@Url.Action("Index","Article")">Return to list</a>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+
+
+

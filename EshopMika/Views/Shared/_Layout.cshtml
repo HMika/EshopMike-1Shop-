@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Models</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+
+    <link href="/css/navbar.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    @* Header *@
+    <header id="appHeader">
+        <nav class="navbar navbar-expand-lg" style="margin-bottom: 0;height: 80px;background-color: #ff9898">
+            <div class="container">
+                <div class="row col-12">
+                    <div class="col-6">
+                        <p style="color: white">Folow us</p>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-3">
+                        <p style="color: white; float:right">My account | USD</p>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <div>
+            <nav class="navbar navbar-expand-lg" style="margin-bottom:0;float:right;background-color: #ff9898">
+
+            </nav>
+            <nav class="navbar navbar-expand-lg" style="margin-bottom:0;background-color: #ff9898">
+            </nav>
+            <nav class="navbar navbar-expand-lg" style="background-color: #ff9898">
+                <div class="container">
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")"><h1 style="color:white">DEBRA</h1></a>
+                    <form class="form-inline my-2 my-md-0">
+                        <input class="form-control" type="text" size="100" style="background-color:pink" placeholder="Search our store" aria-label="Search">
+                        <a href="#"><i class="fa fa-search" style="color:white; margin-left:5px" aria-hidden="true"></i></a>
+                    </form>
+                    <a asp-action="Index" asp-controller="Cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="color:white"></i></a>
+                </div>
+            </nav>
+
+            <nav class="navbar navbar-expand-lg" style="margin-left:590px;background-color:white">
+                <div class="collapse navbar-collapse" id="navbarsExample09">
+                    <div class="container">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Shop">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Products">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Blog">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </nav>
+        </div>
+    </header>
+    @* Body *@
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small pt-4" style="background-color:white; bottom:0;width:100%">
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left" id="appFooter">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-4 ">
+
+                    <!-- Content -->
+                    <h1 class="font-weight-bold text-uppercase mt-3 mb-4">DEBRA</h1>
+                    <h5><b>Address:</b></h5>
+                    <p>
+                        4782-45454  Arlignton bridge 50
+                    </p>
+                    <h5><b>Need help?</b></h5>
+                    <p>
+                        Call: 454577448
+                    </p>
+                    <h5><b>Email:</b></h5>
+                    <p>
+                        example@example.com
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-2">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">About US</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            About us
+                        </li>
+                        <li>
+                            Store location
+                        </li>
+                        <li>
+                            Contact
+                        </li>
+                        <li>
+                            Order tracking
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-2">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Usefull Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            Returns
+                        </li>
+                        <li>
+                            Support Policy
+                        </li>
+                        <li>
+                            Size guide
+                        </li>
+                        <li>
+                            FAQs
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-2">
+
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Lastes Blogs</h5>
+                    <div>
+                        <div class="row">
+                            <div>
+                                <img src="~/images/2.png" width="180" />
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div>
+                                <img src="~/images/3.png" width="180" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <hr>
+        <div class="container">
+            <div class="row">
+                <p style="color:grey">Copyright &nbsp; ©  &nbsp; </p> &nbsp; Vesoz &nbsp; <p style="color:grey"> All rights reserved</p>
+            </div>
+        </div>
+
+
+    </footer>
+    <!-- Footer -->
+
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

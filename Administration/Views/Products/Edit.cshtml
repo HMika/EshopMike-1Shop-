@@ -1,0 +1,77 @@
+﻿@model Models.Data.Products
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="card">
+
+    <div class="card-header">
+        <h1>Edit product</h1>
+    </div>
+
+    @using (Html.BeginForm("Edit", "Products", FormMethod.Post)) 
+    { 
+        <div class="card-body">
+            <div class="row flex-row-reverse">
+                    <div class="col-md-12 col-lg-6 col-12">
+
+                        <div class="featured-image">
+                            <div class="" id="ProductPhoto">
+                                <img width="500" id="ProductPhotoImg" class="product-zoom product_variant_image" data-image-id="" alt="1. New and sale badge product" src="@Model.PhotoPath">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card col-md-12 col-lg-6 col-12">
+                        <label for="Id">Id</label>
+                        <input type="text" class="form-control" value="@Model.Id" name="Id" disabled />
+
+                        <label for="NameOfProduct">Name of product</label>
+                        <input type="text" class="form-control" value="@Model.NameOfProduct" name="NameOfProduct"  />
+
+                        <label for="Description">Description</label>
+                        <input type="text" class="form-control" value="@Model.Description" name="Description"  />
+
+                        <label for="Price">Price</label>
+                        <input type="text" class="form-control" value="@Model.Price" name="Price"  />
+
+                        <label for="Discount">Discount</label>
+                        <input type="number" class="form-control" name="Discount" value="@Model.Discount"  />
+
+                        <label for="DPH">DPH</label>
+                        <input type="number" class="form-control" value="@Model.Dph" name="Dph"  />
+
+                        <label for="photo">Photo</label>
+                        <input type="text" class="form-control" name="PhotoPath" value="@Model.PhotoPath" />
+
+                        <label for="Size">Size</label>
+                        <input type="text" class="form-control" name="Size" value="@Model.Size"/>
+
+                        <label for="Vendor">Vendor</label>
+                        <input type="text" class="form-control" name="Vendor" value="@Model.Vendor"/>
+
+                        <label for="Quantity">Quantity</label>
+                        <input type="number" class="form-control" name="Quantity" value="@Model.Quantity"/>
+
+
+                    </div>
+                    
+            </div>
+        </div>
+        <hr />
+        <div class="card-footer">
+            <div class=" row">
+                <input type="submit" class="btn btn-info" value="Save" />
+                <a class="btn btn-warning" href="@Url.Action("Index","Products")">Return to list</a>
+            </div>
+           
+        </div>
+    }
+</div>
+
+
+
+
+

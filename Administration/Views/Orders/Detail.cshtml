@@ -1,0 +1,68 @@
+﻿@model Models.Models.PreOrderedProduct
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h1>Ordered products</h1>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Id product</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>DPH</th>
+                        <th>Size</th>
+                        <th>Vendor</th>
+                        <th>Quntity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        decimal? totalPrice = 0;
+                        foreach (var item in Model.Products)
+                        {
+                            totalPrice += item.Quantity * item.Price;
+                            <tr>
+                                <td>@item.Id</td>
+                                <td><img width="50" height="50" src="@item.PhotoPath"/></td>
+                                <td>@item.NameOfProduct</td>
+                                <td>@item.Description</td>
+                                <td>@item.Price</td>
+                                <td>@item.Discount</td>
+                                <td>@item.Dph</td>
+                                <td>@item.Size</td>
+                                <td>@item.Vendor</td>
+                                <td>@item.Quantity</td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+
+        <div class="card-footer">
+            <hr />
+            <div class="alert alert-warning" style="text-align:right">
+                @{
+                    <h1><b>Total price: </b> $@totalPrice</h1>
+                 }
+            </div>
+            <div>
+                <a class="btn btn-info" href="@Url.Action("Index","Orders")">Return to list</a>
+            </div>
+        </div>
+    </div>
+</div>
+

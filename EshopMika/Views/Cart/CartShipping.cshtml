@@ -1,0 +1,166 @@
+﻿@model  Models.Models.CartInformation
+<div>
+
+    <div style="margin-left:250px; margin-right:250px">
+
+        @using (Html.BeginForm("CartPayment", "Cart", FormMethod.Get))
+        {
+
+            <div class="row col-12">
+                <div class="col-6">
+
+                    <h4 style="float:left" class="modal-title">DEBRA</h4>
+                    <br />
+                    <br />
+                    <div class="row" style="margin-left:12px">
+                        <p style="color:pink">Cart</p>&nbsp;
+                        <p>></p>&nbsp;
+                        <p style="color:pink">Information</p> &nbsp;
+                        <p>></p>&nbsp;
+                        <p style="color:pink">Shipping</p>
+                        <p>></p>&nbsp;
+                        <p>Payment</p>
+                    </div>
+                    <div class="row">
+
+                        <div class="container">
+                            <br />
+                            <br />
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Contact</th>
+                                    <td>@Model.Orders.Email</td>
+                                    <td><a href="#">Change</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Ship to</th>
+                                    <td>@Model.Orders.Address</td>
+                                    <td><a href="#">Change</a></td>
+                                </tr>
+                                <tr>
+                                    <th>Method</th>
+                                    <td>Standart</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <br />
+                            <br />
+                            <h5>Payment</h5>
+                            <p>All transaction are secured and  encrypted</p>
+                            <br />
+                            <input type="text" value="Cash On Delivery (COD)" class="form-control" />
+                            <br />
+                            <br />
+                            <h5>Billing address</h5>
+                            <h6>Select the address that matches your card or payment method </h6>
+                            <br />
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td><input type="radio" name="radio1" /></td>
+                                    <td>Same as shipping address </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" name="radio2" /></td>
+                                    <td>Use a  different billing address</td>
+                                </tr>
+
+                            </table>
+                            <br />
+                            <br />
+
+                            <div class="row col-12">
+                                <div class="col-6">
+                                    <a href="@Url.Action("CartInformation", "Cart")"> &nbsp;<p style="color:pink">Return to Information</p></a>
+                                </div>
+                                <div style="float:right">
+                                    <button class="btn btn-danger" type="submit" id="btnMyModalSecond">Complete order</button>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+                </div>
+                <div class="col-6 jumbotron">
+                    <br />
+                    <br />
+
+                    @{
+                        int totalPriceFinal = 0;
+                        int tFin = 0;
+                        int counter = 0;
+                        foreach (var item in Model.Products)
+                        {
+                            int totalPrice = int.Parse(Model.MyBasket.Quantity[counter].ToString()) * int.Parse(item.Price.ToString());
+                            totalPriceFinal += totalPrice;
+                            counter++;
+                            <div class="row col-12">
+                                <div class="col-2">
+                                    <img src="@item.PhotoPath" width="50" />
+                                </div>
+                                <div class="col-6">
+                                    <p>@item.NameOfProduct</p>
+                                </div>
+                                <div class="col-4">
+                                    <td>$@totalPrice</td>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                    <br />
+                    <hr />
+                    <br />
+                    <div class="row col-12">
+                        <div class="col-4">
+                            Subtotal
+                        </div>
+                        <div>
+                            $@totalPriceFinal
+                        </div>
+                    </div>
+                    <div class="row col-12">
+                        <div class="col-4">
+                            Shipping
+                        </div>
+                        <div>
+                            Calculated at next step
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <hr />
+                    <br />
+                    <div class="row col-12">
+                        <div class="col-8">
+                            <h3>Total</h3>
+
+                        </div>
+                        <div>
+                            <h6>USD &nbsp;  $@totalPriceFinal</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#appHeader").attr("hidden", true);
+        $("#appFooter").attr("hidden", true);
+    });
+
+</script>

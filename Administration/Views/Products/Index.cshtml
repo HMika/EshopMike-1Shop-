@@ -1,0 +1,82 @@
+﻿@model List<Models.Data.Products>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="card">
+        <div class="row">
+            <div class="col-4">
+                <h1>Ordered products</h1>
+            </div>
+            <div class="col-8" style="text-align:right">
+                <a class="btn btn-dark" href="@Url.Action("Add","Products")">Add new Product</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Id product</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>DPH</th>
+                        <th>Size</th>
+                        <th>Vendor</th>
+                        <th>Quntity</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        decimal? countTypeOfProduct = 0;
+                        foreach (var item in Model)
+                        {
+                            countTypeOfProduct++;
+                            <tr>
+                                <td>@item.Id</td>
+                                <td><img width="50" height="50" src="@item.PhotoPath" /></td>
+                                <td>@item.NameOfProduct</td>
+                                <td>@item.Description</td>
+                                <td>@item.Price</td>
+                                <td>@item.Discount</td>
+                                <td>@item.Dph</td>
+                                <td>@item.Size</td>
+                                <td>@item.Vendor</td>
+                                <td>@item.Quantity</td>
+                                <td width="200"><a class="btn btn-info" href="@Url.Action("Edit","Products", new {id = item.Id })">EDIT</a> | <a class="btn btn-danger" onclick="DeleteConfirm(@item.Id)" href="#">DELETE</a> <a hidden class="btn btn-danger" id="deleteConfirmed_@item.Id" href="@Url.Action("Delete","Products", new {id = item.Id })"></a></td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+
+        <div class="card-footer">
+            <hr />
+            <div class="alert alert-warning" style="text-align:right">
+                @{
+                    <h1><b>Total type of products in our Storage: </b> @countTypeOfProduct</h1>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function DeleteConfirm(id) {
+        var r = confirm("Are you sure  to delete this  product?");
+
+        if (r == true) {
+            document.getElementById("deleteConfirmed_"+id).click();
+        } else {
+            
+        }
+    }
+</script>

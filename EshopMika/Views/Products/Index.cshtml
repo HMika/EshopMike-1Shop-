@@ -1,0 +1,243 @@
+﻿@model Models.Models.ProductList
+@{
+    ViewData["Title"] = "Shop Page";
+}
+
+<div class="row" style="margin-bottom:10px">
+    <img src="~/images/products_4.png" />
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            @* Sort begin *@
+            <div class="card">
+                <div class="row col-12">
+                    <div class="col-3">
+                        Showing:
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-3">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Show:
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">3</a>
+                                <a class="dropdown-item" href="#">6</a>
+                                <a class="dropdown-item" href="#">9</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sort by:
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Price</a>
+                                <a class="dropdown-item" href="#">Price by</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            @* Sort end *@
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+
+                    <div class="row">
+
+                        @{
+                            foreach (var item in Model.Products)
+                            {
+                                <div class="col-md-4">
+                                    <div class="myProducts card mb-4 shadow-sm">
+                                        <img src="@item.PhotoPath" width="305" />
+                                        <div class="middle">
+                                            @Html.ActionLink("Detail", "Detail", "Shop", new { id = item.Id, @class = "btn btn-primary text" })
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text" style="color:dimgray"><b>@item.NameOfProduct</b></p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <label style="color:pink"><b>@item.Price &nbsp;<a>$</a></b></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                @for (int i = 0; i < item.Rate; i++)
+                                                {
+                                                    <img src="~/images/star.png" width="20" height="20" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            @* Paggination *@
+            <br />
+            <br />
+            <div class="container" style="text-align:center">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+
+
+       
+
+        <div class="jumbotron col-md-4">
+            @using (Html.BeginForm("SortIndex", "Products", FormMethod.Post))
+            {
+            <div class="row">
+                <input type="text" placeholder="Search our store" />
+                <input type="submit" class="btn btn-light" value="Search" />
+                <a class="btn btn-light" href="@Url.Action("", "Products")">Clear Filter</a>
+            </div>
+                <br />
+                <br />
+                <h5><b>Categories</b></h5>
+
+                
+
+                    foreach (var item in Model.Categories)
+                    {
+                        <p><a href="@Url.Action("Index", "Products", new { id = item.Id})">@item.NameOfcategory</a></p>
+                    }
+
+                
+
+                <br />
+                <br />
+
+                <hr />
+                <br />
+
+                <h5><b>Vendors</b></h5>
+
+                
+
+                    HashSet<string> vendorList = new HashSet<string>();
+                    foreach (var item in Model.Products)
+                    {
+                        vendorList.Add(item.Vendor);
+                    }
+
+                    @foreach (var item in vendorList)
+                    {
+                        <div class="row col-6">
+                            <div class="col-3">
+                                <input id="checkbox_@item" type="checkbox" name="Vendor" value="@item" />
+                            </div>
+                            <div>
+                                <label for="checkbox_@item">@item</label>
+
+                            </div>
+                        </div>
+                    }
+
+                
+
+
+
+                <hr />
+                <br />
+                <br />
+
+                <h5><b>Size</b></h5>
+
+                
+                    HashSet<string> sizeList = new HashSet<string>();
+                    foreach (var item in Model.Products)
+                    {
+                        sizeList.Add(item.Size);
+                    }
+
+                    foreach (var item in sizeList)
+                    {
+                        <div class="row col-12">
+                            <div class="col-6">
+                                <input id="checkbox_@item" name="Size" value="@item" type="checkbox" />
+                                <label for="checkbox_@item"  value="">@item</label>
+                            </div>
+                        </div>
+                }
+
+
+
+                <hr />
+                <br />
+
+                <h5><b>By Rate</b></h5>
+
+
+                HashSet<int?> rateList = new HashSet<int?>();
+                foreach (var item in Model.Products)
+                {
+                    rateList.Add(item.Rate);
+                }
+
+                foreach (var item in rateList)
+                {
+                        <div class="row col-12">
+                            <div class="col-6">
+                                @if (item != null)
+                                {
+                                    <input id="checkbox_@item" name="Rate" value="@item" type="checkbox" />
+                                    <label for="checkbox_@item" name="Rate">@item</label>
+                                }
+                                else
+                                {
+                                    <input id="checkbox_@item" name="Rate" value="0" type="checkbox" />
+                                    <label for="checkbox_@item" name="Rate">Unrated</label>
+                                }
+
+                            </div>
+                        </div>
+                    }
+
+                
+
+                <hr />
+                <br />
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

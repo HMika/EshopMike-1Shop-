@@ -1,0 +1,107 @@
+﻿<div class="row" style="margin-bottom:10px">
+    <img src="~/images/contact_4.png" />
+</div>
+<div class="container" style="margin-bottom:200px">
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well well-sm">
+                    @using (Html.BeginForm("PostComment", "Contact", FormMethod.Post))
+                    {
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <h2>Tell Us Your Message</h2>
+                                <br />
+                                <div class="form-group">
+                                    <label for="name">
+                                        Your Firstname
+                                    </label>
+                                    <input type="text" class="form-control" name="Firstname" id="firtsname" placeholder="Full Name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">
+                                        Your Lastname
+                                    </label>
+                                    <input type="text" class="form-control" name="Lastname" id="lastname" placeholder="Full Name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">
+                                        Your Emal
+                                    </label>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-envelope"></span>
+                                    </span>
+                                    <input type="email" class="form-control" id="email" name="Email" placeholder="Enter email" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Subject">
+                                        Subject
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="subject" name="Subject" placeholder="Subject" required="required" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Message">
+                                        Your Message
+                                    </label>
+                                    <textarea name="message" id="message" name="Message" class="form-control" rows="9" cols="25" required="required"
+                                              placeholder="Message"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12">
+                                <button type="submit" style="float:left" class="btn btn-danger pull-right" id="btnContactUs">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="jumbotron col-md-4">
+                <br />
+                <h4>Contact Us</h4>
+
+                <br />
+                <div class="row">
+                    <h5><i class="fa fa-fax"></i><b>Address</b></h5>
+                </div>
+                <p>123 Main Street, Anytown, CA 12345 - USA</p>
+
+                <hr />
+
+                <br />
+                <div class="row">
+                    <h5><i class="fa fa-phone"></i>Phone</b></h5>
+                </div>
+
+                <p>Mobile: (08) 123 456 789</p>
+                <p>Hotline: 1009 678 456</p>
+
+                <hr />
+
+                <div class="row">
+                    <h5><i class="fa fa-envelope"></i>Email</b></h5>
+                </div>
+
+                <p>yourmail@domain.com</p>
+                <p>mail@yourmail.com</p>
+
+                <br />
+                <hr />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mapouter">
+    <div class="gmap_canvas">
+        <iframe width="100%" height="465" id="gmap_canvas" src="https://maps.google.com/maps?q=Prague&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/1/"></a>
+    </div>
+</div>

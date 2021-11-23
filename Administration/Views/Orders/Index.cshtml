@@ -1,0 +1,56 @@
+﻿@model List<Models.Data.Orders>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <h1>Orders</h1>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Id order</th>
+                        <th>Client firstname</th>
+                        <th>Client lastname</th>
+                        <th>Clien address</th>
+                        <th>Client telephone number</th>
+                        <th>Client Email</th>
+                        <th>Client Post code</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Firstname</td>
+                                <td>@item.Lastname</td>
+                                <td>@item.Address</td>
+                                <td>@item.Telephone</td>
+                                <td>@item.Email</td>
+                                <td>@item.Psc</td>
+                                <td>
+                                    <a class="btn btn-info" href="@Url.Action("Detail","Orders",new {id = item.Id })">Detail</a>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+
+        <div class="card-footer">
+
+        </div>
+    </div>
+</div>
+

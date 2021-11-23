@@ -1,0 +1,77 @@
+﻿@model List<Models.Data.Article>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-4">
+                    <h1>Articles</h1>
+                </div>
+                <div class="col-8" style="text-align:right">
+                    <a class="btn btn-dark" href="@Url.Action("Add","Article")">Add new Article</a>
+                </div>
+            </div>
+           
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Id product</th>
+                        <th>Picture</th>
+                        <th>Title</th>
+                        <th>Context</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        decimal? countOfArticles = 0;
+                        foreach (var item in Model)
+                        {
+                            countOfArticles++;
+                            <tr>
+                                <td>@item.Id</td>
+                                <td><img width="300" height="100" src="@item.Picture" /></td>
+                                <td>@item.Title</td>
+                                <td><textarea cols="180"  rows="5">
+                                    @item.Context
+                                    </textarea> 
+                                </td>
+                                <td width="200"><a class="btn btn-info" href="@Url.Action("Edit","Article", new {id = item.Id })">EDIT</a> | <a class="btn btn-danger" onclick="DeleteConfirm(@item.Id)" href="#">DELETE</a> <a hidden class="btn btn-danger" id="deleteConfirmed_@item.Id" href="@Url.Action("Delete","Article", new {id = item.Id })"></a></td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+
+        <div class="card-footer">
+            <hr />
+            <div class="alert alert-warning" style="text-align:right">
+                @{
+                    <h1><b>Total cout of Articles in our Storage: </b> @countOfArticles</h1>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function DeleteConfirm(id) {
+        var r = confirm("Are you sure  to delete this  article?");
+
+        if (r == true) {
+            document.getElementById("deleteConfirmed_"+id).click();
+        } else {
+
+        }
+    }
+</script>

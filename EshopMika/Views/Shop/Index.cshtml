@@ -1,0 +1,301 @@
+﻿@model List<Models.Data.Products>
+@{
+    ViewData["Title"] = "Shop Page";
+}
+
+<div class="row" style="margin-bottom:10px">
+    <img src="~/images/products_4.png" />
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            @* Sort begin *@
+            <div class="card">
+                <div class="row col-12">
+                    <div class="col-3">
+                        Showing:
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-3">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Show:
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">3</a>
+                                <a class="dropdown-item" href="#">6</a>
+                                <a class="dropdown-item" href="#">9</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sort by:
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Price</a>
+                                <a class="dropdown-item" href="#">Price by</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            @* Sort end *@
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+
+                    <div class="row">
+
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <div class="col-md-4">
+                                    <div class="myProducts card mb-4 shadow-sm">
+                                        <img src="@item.PhotoPath" width="240" />
+                                        <div class="middle">
+                                            @Html.ActionLink("Detail","Detail","Shop", new {id = item.Id, @class="btn btn-info text" })
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">@item.NameOfProduct</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <label>@item.Price &nbsp; <a style="color:gray">$</a>  </label> 
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                @for (int i = 0; i < item.Rate; i++)
+                                                {
+                                                    <img src="~/images/star.png" width="20" height="20" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            @* Paggination *@
+            <br />
+            <br />
+            <div class="container" style="text-align:center">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+
+
+
+
+        </div>
+        <div class="jumbotron col-md-4">
+            <div class="row">
+                <input type="text" placeholder="Search our store" />
+                <input type="button" value="Search" />
+            </div>
+            <br />
+            <br />
+            <h5><b>Categories</b></h5>
+            <p>Best Sellers(12)</p>
+            <p>New Arrivals(14)</p>
+            <p>Sale Items(14)</p>
+            <p>Top Sell(14)</p>
+            <br />
+            <br />
+
+            <hr />
+            <br />
+
+            <h5><b>Vendors</b></h5>
+
+            <div class="row col-6">
+                <div class="col-3">
+                    <input id="checkbox1" type="checkbox" />
+                </div>
+                <div>
+                    <label for="checkbox1">Vendor 1</label>
+
+                </div>
+            </div>
+            <div class="row col-6">
+                <div class="col-3">
+                    <input id="checkbox1" type="checkbox" />
+                </div>
+                <div>
+                    <label for="checkbox1">Vendor 10</label>
+
+                </div>
+            </div>
+            <div class="row col-6">
+                <div class="col-3">
+                    <input id="checkbox1" type="checkbox" />
+                </div>
+                <div>
+                    <label for="checkbox1">Vendor 11</label>
+
+                </div>
+            </div>
+            <div class="row col-6">
+                <div class="col-3">
+                    <input id="checkbox1" type="checkbox" />
+                </div>
+                <div>
+                    <label for="checkbox1">Vendor 12</label>
+
+                </div>
+            </div>
+            <div class="row col-6">
+                <div class="col-3">
+                    <input id="checkbox1" type="checkbox" />
+                </div>
+                <div>
+                    <label for="checkbox1">Vendor 2</label>
+
+                </div>
+            </div>
+
+            <hr />
+            <br />
+
+            <h5><b>Colors</b></h5>
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Red</label>
+                </div>
+
+
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Green</label>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Blue</label>
+                </div>
+
+
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Yellow</label>
+                </div>
+            </div>
+
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">White</label>
+                </div>
+            </div>
+
+            <hr />
+            <br />
+
+            <h5><b>Size</b></h5>
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">S</label>
+                </div>
+
+
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">M</label>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">L</label>
+                </div>
+
+
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">XL</label>
+                </div>
+            </div>
+
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Xxl</label>
+                </div>
+            </div>
+
+            <hr />
+            <br />
+
+            <h5><b>Tags</b></h5>
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Black</label>
+                </div>
+
+
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Blue</label>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Fiber</label>
+                </div>
+
+
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Gold</label>
+                </div>
+            </div>
+
+            <div class="row col-12">
+                <div class="col-6">
+                    <input id="checkbox1" type="checkbox" />
+                    <label for="checkbox1">Gray</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

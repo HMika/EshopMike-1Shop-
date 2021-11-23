@@ -1,0 +1,130 @@
+﻿@model Models.Models.MyBasket
+<div>
+
+    <div style="margin-left:250px; margin-right:250px">
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+
+            <div class="row col-12">
+                <div class="col-6">
+
+                    <h4 style="float:left" class="modal-title">DEBRA</h4>
+                    <br />
+                    <br />
+                    <div class="row" style="margin-left:12px">
+                        <i style="color:pink" class="fa fa-check-circle-o fa-2x" aria-hidden="true"></i>
+                        <h2>Thank you!</h2>
+                    </div>
+                    <div class="row">
+                        <br />
+                        <div class="container">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Your order is confirmed</h5>
+                                    <p class="card-text">You will recieve a conformation email your order number shortly.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Customer information</h5>
+
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="row col-12">
+                                <div class="col-6">
+                                    <p>Need help <b style="color:pink">Contact Us</b> </p>
+                                </div>
+                                <div style="float:right">
+                                    <button class="btn btn-danger" type="submit" id="btnMyModalSecond">Continue Shopping</button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+                </div>
+                <div class="col-6 jumbotron">
+                    <br />
+                    <br />
+
+                    @{
+                        int totalPriceFinal = 0;
+                        int tFin = 0;
+                        int counter = 0;
+                        foreach (var item in Model.ProductList)
+                        {
+                            int totalPrice = int.Parse(Model.Quantity[counter].ToString()) * int.Parse(item.Price.ToString());
+                            totalPriceFinal += totalPrice;
+                            <div class="row col-12">
+                                <div class="col-2">
+                                    <img src="@item.PhotoPath" width="50" />
+                                </div>
+                                <div class="col-6">
+                                    <p>@item.NameOfProduct</p>
+                                </div>
+                                <div class="col-4">
+                                    <td>$@totalPrice</td>
+                                </div>
+                            </div>
+                            counter++;
+                        }
+
+                    }
+
+                    <br />
+                    <hr />
+                    <br />
+                    <div class="row col-12">
+                        <div class="col-4">
+                            Subtotal
+                        </div>
+                        <div>
+                            $@totalPriceFinal
+                        </div>
+                    </div>
+                    <div class="row col-12">
+                        <div class="col-4">
+                            Shipping
+                        </div>
+                        <div>
+                            Calculated at next step
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <hr />
+                    <br />
+                    <div class="row col-12">
+                        <div class="col-8">
+                            <h3>Total</h3>
+
+                        </div>
+                        <div>
+                            <h6>USD &nbsp;  $@totalPriceFinal</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#appHeader").attr("hidden", true);
+        $("#appFooter").attr("hidden", true);
+    });
+
+</script>

@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext -Connection "Name=DefaultConnection" Pomelo.EntityFrameworkCore.MySql -OutputDir Data -context EshopDbContext -t Admin, Article, Article_Tags, Category, CustomerComments, Feedback, Orders, Products, Products_Category,Products_Orders, Tags, Basket, Ordered_Basket -f 
